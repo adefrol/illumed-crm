@@ -12,7 +12,7 @@ export class Deal {
     @Column() 
     deal_cost:number;
 
-    @ManyToOne(() => Funnel, (funnel) => funnel.deals)
+    @ManyToOne(() => Funnel, (funnel) => funnel.deals, {onUpdate: 'NO ACTION'})
     @JoinColumn({name: 'funnel_id'})
     funnel: Funnel
 }

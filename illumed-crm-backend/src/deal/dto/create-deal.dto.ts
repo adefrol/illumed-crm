@@ -5,4 +5,4 @@ export class CreateDealDto {
     name: string;
     deal_cost: number;
     funnel: Funnel;
-}
+}   

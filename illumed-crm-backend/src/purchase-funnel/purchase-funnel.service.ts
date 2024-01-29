@@ -12,8 +12,6 @@ export class PurchaseFunnelService {
         private readonly funnelRepository: Repository<Funnel>
     ) { }
 
-
-
     async create(createFunnelDto: CreateFunnelDto):Promise<Funnel> {
         const newFunnel:Funnel = {
             name: createFunnelDto.name,
@@ -26,9 +24,6 @@ export class PurchaseFunnelService {
         
         return await this.funnelRepository.save(newFunnel)
     }
-
-
-
 
     async findAll():Promise<Funnel[]> {
         return this.funnelRepository.find({

@@ -25,6 +25,10 @@ export class DealService {
         return await this.dealRepository.save(newDeal)
         
     }
+
+    async update(createDealDto: CreateDealDto, id: number) {
+        return await this.dealRepository.update(id,createDealDto)
+    }
     
     async findAll() {
         return await this.dealRepository.find({
