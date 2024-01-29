@@ -6,9 +6,14 @@ import { UsersModule } from './users/users.module';
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { PurchaseFunnelModule } from './purchase-funnel/purchase-funnel.module';
+import { DealService } from './deal/deal.service';
+import { DealModule } from './deal/deal.module';
+import { DealController } from './deal/deal.controller'
+import { PurchaseFunnelController } from './purchase-funnel/purchase-funnel.controller'
 
 @Module({
-  imports: [AuthModule, UsersModule, 
+  imports: [AuthModule, UsersModule, PurchaseFunnelModule,
+    DealModule,
     ConfigModule.forRoot({ isGlobal: true,  }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
@@ -24,8 +29,8 @@ import { PurchaseFunnelModule } from './purchase-funnel/purchase-funnel.module';
       }),
       inject: [ConfigService]
     }),
-    PurchaseFunnelModule],
-  controllers: [AppController],
+],
+  controllers: [AppController, DealController, PurchaseFunnelController],
   providers: [AppService],
 })
 export class AppModule {}
