@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from '@nestjs/common'
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { Funnel } from './entities/purchase-funnel.entity'
 import { Repository } from 'typeorm'
@@ -10,8 +10,7 @@ export class PurchaseFunnelService {
     constructor(
         @InjectRepository(Funnel)
         private readonly funnelRepository: Repository<Funnel>
-    ) { }
-
+    ) { }   
     async create(createFunnelDto: CreateFunnelDto):Promise<Funnel> {
         const newFunnel:Funnel = {
             name: createFunnelDto.name,
@@ -24,17 +23,17 @@ export class PurchaseFunnelService {
         
         return await this.funnelRepository.save(newFunnel)
     }
-
     async findAll():Promise<Funnel[]> {
         return this.funnelRepository.find({
             relations: {
                 deals: true,
             }
         })
-    }
+    }   
+    async findOne(id: number):Promise<Funnel | NotFoundException>  {
+        
 
-    async findOne(id: number):Promise<Funnel> {
-        return await this.funnelRepository.findOne({
+        const funnel = this.funnelRepository.findOne({
             where: {
                 id,
             },
@@ -42,8 +41,11 @@ export class PurchaseFunnelService {
                 deals: true,
             }
         })
+
+        if (!funnel) {
+            return new NotFoundException("funnel not found")
+        }
+
+        return funnel
     }
-
-
-
 }

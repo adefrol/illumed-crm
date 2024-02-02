@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Param, Post, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, HttpStatus, NotFoundException, Param, Post, Req, UseGuards } from '@nestjs/common';
 import { PurchaseFunnelService } from './purchase-funnel.service';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard'
 import { Funnel } from './entities/purchase-funnel.entity'
@@ -19,14 +19,14 @@ export class PurchaseFunnelController {
     @UseGuards(JwtAuthGuard)
     @HttpCode(HttpStatus.OK)
     @Get(':id')
-    findOne(@Param('id') id:number):Promise<Funnel> {
+    findOne(@Param('id') id:number):Promise<Funnel | NotFoundException> {
         return this.funnelService.findOne(id)
     }
 
     @UseGuards(JwtAuthGuard)
     @HttpCode(HttpStatus.OK)
     @Post()
-    create(@Body() createFunnelDto: CreateFunnelDto, @Req() req) {
+    create(@Body() createFunnelDto: CreateFunnelDto, @Req() req): Promise<Funnel> {
         return this.funnelService.create(createFunnelDto)
     }
 }
