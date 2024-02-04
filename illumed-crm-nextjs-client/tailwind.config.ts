@@ -15,6 +15,13 @@ const config: Config = {
       },
       width: {
         '99' : '99%'
+      },
+      colors: {
+        'sidebar-color' : '#18191E',
+        'sidebar-text-color' : '#84858E',
+        'sidebar-active-text-color' : '#A3AEFF',
+        'sidebar-block-color' : '#34353A',
+        'main-primary-color' : '#232429',
       }
     },
   },

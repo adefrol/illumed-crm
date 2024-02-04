@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className={inter.className + " flex h-svh bg-slate-300 overflow-hidden"}>
+      <body className={inter.className + " flex h-svh bg-sidebar-color overflow-hidden"}>
         <SideBar />
         <main>{children}</main>
       </body>
