@@ -31,8 +31,6 @@ export class PurchaseFunnelService {
         })
     }   
     async findOne(id: number):Promise<Funnel | NotFoundException>  {
-        
-
         const funnel = this.funnelRepository.findOne({
             where: {
                 id,

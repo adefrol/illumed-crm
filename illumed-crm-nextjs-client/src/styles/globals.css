@@ -36,5 +36,5 @@
 
 
 main {
-  @apply bg-main-primary-color rounded-l-[80px] w-full p-8 pl-14;
+  @apply overflow-x-hidden bg-main-primary-color rounded-l-[80px] ml-[325px] min-h-svh   w-full h-full;
 }

@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from '@nestjs/common'
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common'
 import { Repository } from 'typeorm'
 import { Deal } from './entities/deal.entity'
 import { InjectRepository } from '@nestjs/typeorm'
@@ -36,5 +36,22 @@ export class DealService {
                 funnel: true,
             }
         });
+    }
+
+    async findOne(id: number) {
+        const deal = this.dealRepository.findOne({
+            where: {
+                id,
+            },
+            relations: {
+                funnel: true,
+            }
+        })
+
+        if (!deal) {
+            return new NotFoundException()
+        }
+
+        return deal
     }
 }

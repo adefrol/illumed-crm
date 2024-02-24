@@ -5,9 +5,10 @@ export default function Home() {
 
   return (
     <>
-    <div className='text-center'>    
-    hello 
+    <div className='mt-5 grid h-full grid-cols-2 gap-10  md:grid-cols-3'>    
+
     </div>
+
     </>
   );
 }

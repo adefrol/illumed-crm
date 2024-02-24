@@ -3,6 +3,7 @@ import { Inter } from "next/font/google"
 import "@/styles/globals.css"
 import Button from '@/components/Button'
 import { SideBar } from '@/components/SideBar'
+import { cookies } from 'next/headers'
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -17,11 +18,19 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+
+  const cookieStore = cookies()
+
   return (
     <html lang="ru">
-      <body className={inter.className + " flex h-svh bg-sidebar-color overflow-hidden"}>
-        <SideBar />
-        <main>{children}</main>
+      <body className={inter.className + " flex bg-sidebar-color"}>
+        {
+         // cookieStore.get("token") ? (<><SideBar /><main>{children}</main></>) : (<main>{children}</main>)
+         <>
+         <SideBar/>
+         <main>{children}</main>
+         </>
+        }
       </body>
     </html>
   )

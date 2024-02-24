@@ -1,4 +1,4 @@
-import { BadRequestException, Body, Controller, Get, HttpCode, HttpStatus, Param, Patch, Post, UseGuards } from '@nestjs/common'
+import { BadRequestException, Body, Controller, Get, HttpCode, HttpStatus, NotFoundException, Param, Patch, Post, UseGuards } from '@nestjs/common'
 import { DealService } from './deal.service'
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard'
 import { Deal } from './entities/deal.entity'
@@ -14,7 +14,13 @@ export class DealController {
     findAll(): Promise<Deal[]> {
         return this.dealService.findAll()
     }
-
+    
+    @UseGuards(JwtAuthGuard)
+    @HttpCode(HttpStatus.OK)
+    @Get(':id')
+    findOne(@Param('id') id:number) {
+        return this.dealService.findOne(id)
+    }
     
     @UseGuards(JwtAuthGuard)
     @HttpCode(HttpStatus.OK)

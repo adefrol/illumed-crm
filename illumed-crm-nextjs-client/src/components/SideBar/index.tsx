@@ -1,8 +1,6 @@
 'use client'
-
 import { usePathname } from 'next/navigation'
 import { MenuItem } from '../MenuItem'
-import { icons } from 'lucide-react'
 import { navLinkType } from '../MenuItem/menuitem.type'
 
 
@@ -17,7 +15,7 @@ export const SideBar = () => {
     const isActive = (path : string) => path === pathName;
 
     return (
-        <aside className='bg-sidebar-color w-[20%] h-full p-11'>
+        <aside className='fixed flex flex-col bg-sidebar-color w-[325px] h-full p-11'>
             {navLinks.map(link => <MenuItem key={link.id} path={link.path} isActive={isActive(link.path)} iconName={link.iconName} name={link.name}/>)}
         </aside>
     )

@@ -1,5 +1,6 @@
 import { Funnel } from 'src/purchase-funnel/entities/purchase-funnel.entity'
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
+import { User } from 'src/users/entities/users.entity'
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
 
 @Entity()
 export class Deal {
@@ -15,4 +16,14 @@ export class Deal {
     @ManyToOne(() => Funnel, (funnel) => funnel.deals, {onUpdate: 'NO ACTION'})
     @JoinColumn({name: 'funnel_id'})
     funnel: Funnel
+
+/*     @OneToOne(() => User, (user) => user.deal, {onUpdate: 'NO ACTION'})
+    @JoinColumn({name: 'user_id'})
+    user: User; */
+
+    @CreateDateColumn()
+    created_at: Date;
+
+    @UpdateDateColumn() 
+    updated_at: Date;
 }

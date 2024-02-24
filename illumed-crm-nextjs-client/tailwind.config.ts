@@ -22,6 +22,8 @@ const config: Config = {
         'sidebar-active-text-color' : '#A3AEFF',
         'sidebar-block-color' : '#34353A',
         'main-primary-color' : '#232429',
+        'main-side' : '#34353a',
+        'priority' : '#C5C7D7'
       }
     },
   },
