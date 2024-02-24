@@ -25,11 +25,11 @@ export default function RootLayout({
     <html lang="ru">
       <body className={inter.className + " flex bg-sidebar-color"}>
         {
-         // cookieStore.get("token") ? (<><SideBar /><main>{children}</main></>) : (<main>{children}</main>)
-         <>
+         cookieStore.get("token") ? (<><SideBar /><main>{children}</main></>) : (<main className='bg-sidebar-color rounded-none ml-0'>{children}</main>)
+/*          <>
          <SideBar/>
          <main>{children}</main>
-         </>
+         </> */
         }
       </body>
     </html>

@@ -11,8 +11,9 @@ export const FunnelService = {
     async getAll() {
         const { data } = await axios.get<IFunnel[]>('/purchase-funnel', {
             headers: {
-                'Authorization': `Bearer ${TEMP_TOKEN}`
-            }
+                'Authorization': `Bearer ${TEMP_TOKEN}`,
+            },
+            
         })
         return data
     }
