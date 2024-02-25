@@ -26,14 +26,15 @@ export class AuthService {
         return null;
       }
 
-      async signIn(username: string, pass: any): Promise<token> {
+      async signIn(username: string, pass: any) {
         const user = await this.usersService.findOne(username);
         if (user?.password !== pass) {
-          throw new UnauthorizedException();
+          throw new UnauthorizedException("Неправильный логин или пароль");
         }
         const payload = { email: user.email, name: user.name };
         return {
           access_token: await this.jwtService.signAsync(payload),
+          statusCode: 200,
         };  
       }
 

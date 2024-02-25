@@ -2,6 +2,7 @@
 
 import { IUser } from '@/interfaces/user.interface'
 import { RotateCw } from 'lucide-react'
+import Link from 'next/link'
 import React, { useState } from 'react'
 
 export const RegisterClient = ({ passData, validateRegister }: { passData: Function, validateRegister: Function }) => {
@@ -93,7 +94,7 @@ export const RegisterClient = ({ passData, validateRegister }: { passData: Funct
         <>
             <div className="w-full flex flex-col items-center justify-center">
                 <h1 className='font-extrabold text-4xl text-priority py-4'>Регистрация</h1>
-                <p className='text-sidebar-text-color text-center w-[85%] py-2 font-bold'>Уже зарегистированы? <span className='text-sidebar-active-text-color underline cursor-pointer'>Войти</span></p>
+                <p className='text-sidebar-text-color text-center w-[85%] py-2 font-bold'>Уже зарегистированы? <Link href={'/login'} ><span className='text-sidebar-active-text-color underline cursor-pointer'>Войти</span></Link></p>
                 {result == "Пользователь с таким e-mail или логином уже существует" ? <div className='text-red-500 text-center'>Аккаунт с таким логином или e-mail уже существует</div> : <></>}
 
                 <div className="m-4 w-[85%]">
@@ -117,8 +118,7 @@ export const RegisterClient = ({ passData, validateRegister }: { passData: Funct
 
                 </div>
                 <p className='text-sidebar-text-color text-center w-[85%] font-bold'>Нажимая зарегистрироваться, вы принимаете <span className='text-sidebar-active-text-color underline'>пользовательское соглашение</span></p>
-                <div onClick={async () => accept()} className='cursor-pointer text-sidebar-color bg-sidebar-active-text-color rounded-3xl mt-10 font-extrabold p-4'>Зарегистрироваться</div>
-                <button onClick={() => console.log(result)}>123</button>
+                <div onClick={async () => accept()} className='cursor-pointer transition-all hover:scale-105 active:scale-95 text-sidebar-color bg-sidebar-active-text-color rounded-3xl mt-10 font-extrabold p-4'>Зарегистрироваться</div>
                 {isLoading ? <RotateCw className='animate-spin text-sidebar-active-text-color absolute' width={100} height={100} /> : <></>}
             </div>
         </>

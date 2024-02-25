@@ -10,6 +10,7 @@ import { DealService } from './deal/deal.service';
 import { DealModule } from './deal/deal.module';
 import { DealController } from './deal/deal.controller'
 import { PurchaseFunnelController } from './purchase-funnel/purchase-funnel.controller'
+import { ContactModule } from './contact/contact.module';
 
 @Module({
   imports: [AuthModule, UsersModule, PurchaseFunnelModule,
@@ -31,6 +32,7 @@ import { PurchaseFunnelController } from './purchase-funnel/purchase-funnel.cont
       }),
       inject: [ConfigService]
     }),
+    ContactModule,
 ],
   controllers: [AppController, DealController, PurchaseFunnelController],
   providers: [AppService],

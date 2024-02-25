@@ -23,7 +23,10 @@ const config: Config = {
         'sidebar-block-color' : '#34353A',
         'main-primary-color' : '#232429',
         'main-side' : '#34353a',
-        'priority' : '#C5C7D7'
+        'priority' : '#C5C7D7',
+        'peach' : "#FFA3A3",
+        'orange-main' : "#F8A576",
+        'violet-main' : "#A076F8"
       }
     },
   },

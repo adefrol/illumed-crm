@@ -15,4 +15,4 @@ import { jwtConstants } from 'src/auth/constants'
   exports: [UsersService],
   providers: [UsersService],
 })
-export class UsersModule { }
+export class UsersModule { }  

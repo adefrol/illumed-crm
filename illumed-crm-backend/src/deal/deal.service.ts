@@ -29,6 +29,11 @@ export class DealService {
     async update(createDealDto: CreateDealDto, id: number) {
         return await this.dealRepository.update(id,createDealDto)
     }
+
+    async delete(id: number) {
+        return await this.dealRepository.delete(id)
+
+    }
     
     async findAll() {
         return await this.dealRepository.find({
@@ -45,6 +50,7 @@ export class DealService {
             },
             relations: {
                 funnel: true,
+                contact: true
             }
         })
 

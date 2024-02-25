@@ -1,4 +1,4 @@
-import { BadRequestException, Body, Controller, Get, HttpCode, HttpStatus, NotFoundException, Param, Patch, Post, UseGuards } from '@nestjs/common'
+import { BadRequestException, Body, Controller, Delete, Get, HttpCode, HttpStatus, NotFoundException, Param, Patch, Post, UseGuards } from '@nestjs/common'
 import { DealService } from './deal.service'
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard'
 import { Deal } from './entities/deal.entity'
@@ -36,7 +36,12 @@ export class DealController {
         }
     }                   
 
-
+    @UseGuards(JwtAuthGuard)
+    @HttpCode(HttpStatus.OK)
+    @Delete(':id')
+    delete(@Param('id') id: number) {
+        this.dealService.delete(id)
+    }
 
     @UseGuards(JwtAuthGuard)
     @HttpCode(HttpStatus.OK)

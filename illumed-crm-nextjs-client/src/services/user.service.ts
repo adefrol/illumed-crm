@@ -1,5 +1,6 @@
 import { IUser } from '@/interfaces/user.interface'
 import axios from 'axios'
+import { cookies } from 'next/headers'
 
 const API_URL = 'http://localhost:3001'
 
@@ -12,22 +13,40 @@ axios.defaults.baseURL = API_URL
 
 export const UserService = {
     async register(regData: IUser) {
-        console.log("start axios");
-        
-        const {data} = await axios.post<IUser, any>('/auth/register', JSON.stringify(regData),
+        const { data } = await axios.post<IUser, any>('/auth/register', JSON.stringify(regData),
             {
                 headers: {
                     "Content-Type": 'application/json'
                 }
             }
-        ).catch((e:any) => {
+        ).catch((e: any) => {
             console.log(e.response.data.message)
             return e.response
         })
-        console.log("end axios");
-
         return data
+    },
+
+    async signIn(regData: IUser) {
+        const { data } = await axios.post<IUser, any>('/auth/login', JSON.stringify(regData),
+            {
+                headers: {
+                    "Content-Type": 'application/json'
+                }
+            }
+        ).catch((e: any) => {
+            console.log(e.response.data.message)
+            return e.response
+        })
+        return data
+    },
+    async getToken() {
+        const cookieStore = cookies()
+        return cookieStore.get("token")?.value
+    },
+
+    async deleteToken() {
+        cookies().delete("token")
     }
 
-    
+
 }
