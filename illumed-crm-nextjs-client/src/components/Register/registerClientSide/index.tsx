@@ -21,7 +21,7 @@ export const RegisterClient = ({ passData, validateRegister }: { passData: Funct
 
     const [isLoading, setIsLoading] = useState(false)
 
-    const [result, setResult] = useState()
+    const [result, setResult] = useState(false)
 
     const regData: IUser = {
         email: email,
@@ -83,7 +83,7 @@ export const RegisterClient = ({ passData, validateRegister }: { passData: Funct
                 validateRegister()
             }
             if(data.statusCode == 409) {
-                console.log("conflict");
+                setResult(true)
             }
         }
     }
@@ -95,7 +95,7 @@ export const RegisterClient = ({ passData, validateRegister }: { passData: Funct
             <div className="w-full flex flex-col items-center justify-center">
                 <h1 className='font-extrabold text-4xl text-priority py-4'>Регистрация</h1>
                 <p className='text-sidebar-text-color text-center w-[85%] py-2 font-bold'>Уже зарегистированы? <Link href={'/login'} ><span className='text-sidebar-active-text-color underline cursor-pointer'>Войти</span></Link></p>
-                {result == "Пользователь с таким e-mail или логином уже существует" ? <div className='text-red-500 text-center'>Аккаунт с таким логином или e-mail уже существует</div> : <></>}
+                {result ? <div className='text-red-500 text-center'>Аккаунт с таким логином или e-mail уже существует</div> : <></>}
 
                 <div className="m-4 w-[85%]">
                     <input type="text" onChange={(e) => setName(e.target.value)} className='outline-none w-full p-6  font-bold bg-sidebar-color rounded-3xl text-sidebar-text-color' placeholder='ФИО *' />
