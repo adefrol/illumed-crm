@@ -2,7 +2,7 @@ import { IFunnel } from '@/interfaces/funnel.interface'
 import axios, { AxiosHeaders } from 'axios'
 import { UserService } from './user.service'
 
-const API_URL = 'http://localhost:3001'
+const API_URL = 'https://illumed-crm-backend.onrender.com'
 
 axios.defaults.baseURL = API_URL
 

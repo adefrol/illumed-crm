@@ -2,7 +2,7 @@ import { IUser } from '@/interfaces/user.interface'
 import axios from 'axios'
 import { cookies } from 'next/headers'
 
-const API_URL = 'http://localhost:3001'
+const API_URL = 'https://illumed-crm-backend.onrender.com'
 
 const TEMP_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoibWFyaWEiLCJpYXQiOjE3MDg2OTQ3NTEsImV4cCI6MTcwOTI5OTU1MX0.mm7BnCawEHSR-XGdXrpPJZGUcquWq1t0kWjvMnq-RJc"
 
